@@ -11,7 +11,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="admin/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom Font Icons CSS-->
     <link rel="stylesheet" href="admin/css/font.css">
     <!-- Google fonts - Muli-->
