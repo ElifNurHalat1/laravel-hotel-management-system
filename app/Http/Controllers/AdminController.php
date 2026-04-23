@@ -82,4 +82,12 @@ class AdminController extends Controller
         return redirect()->back()->with('success','Room added');
         
     }
+
+    public function view_room()
+    {
+
+        $data = Room::all();
+        
+        return view('admin.view_room', compact('data'));
+    }
 }
