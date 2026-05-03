@@ -13,3 +13,7 @@ route::get('/create_room',[AdminController::class,'create_room']);
 route::post('/add_room',[AdminController::class,'add_room']);
 
 route::get('/view_room',[AdminController::class,'view_room']);
+
+route::post('/room_delete/{id}',[AdminController::class,'room_delete']);
+
+route::get('/room_update/{id}',[AdminController::class,'room_update']);

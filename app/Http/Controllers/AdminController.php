@@ -90,4 +90,20 @@ class AdminController extends Controller
         
         return view('admin.view_room', compact('data'));
     }
+
+    public function room_delete($id)
+    {
+        $data = Room::find($id);
+
+        $data->delete();
+
+        return redirect()->back()->with('success','Room has been successfully deleted');
+    }
+
+    public function room_update($id)
+    {
+        $data = Room::find($id);
+
+        return view('admin.update_room', compact('data'));
+    }
 }
