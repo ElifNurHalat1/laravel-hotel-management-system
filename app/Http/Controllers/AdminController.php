@@ -106,4 +106,44 @@ class AdminController extends Controller
 
         return view('admin.update_room', compact('data'));
     }
+
+    public function edit_room(Request $request, $id)
+    {
+        $data = Room::find($id);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'wifi' => 'required|in:yes,no',
+            'type' => 'required|in:regular,premium,deluxe',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $data->room_title = $request->title;
+        $data->description = $request->description;
+        $data->price = $request->price;
+        $data->wifi = $request->wifi;
+        $data->room_type = $request->type;
+        
+        $image = $request->image;
+
+        if($image)
+        {
+            // Delete old image if exists
+            if ($data->image && file_exists(public_path('room/' . $data->image))) {
+                unlink(public_path('room/' . $data->image));
+            }
+
+            $imagename=time().'.'.$image->getClientOriginalExtension();
+
+            $request->image->move('room',$imagename);
+
+            $data->image = $imagename;
+        }
+
+        $data->save();
+
+        return redirect()->back()->with('success','Room updated successfully');
+    }
 }
